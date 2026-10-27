@@ -39,3 +39,13 @@ sources:
         description: 
           Reference definitions for the hydrological parameters exposed through NVE HydAPI, including parameter identifiers, names, and
           measurement units. Used to distinguish physical quantities and interpret observation values consistently.
+
+      - name: nve_snow_hydrology
+        description:
+          Daily modelled grid-cell snow and hydrology values from NVE GridTimeSeries. Includes sampling coordinates, theme, observation
+          date, source time, resolution, value, unit and missing-value indicators. These are point samples rather than bidding-zone averages.
+
+      - name: nve_snow_hydrology_raw
+        description:
+          NVE GridTimeSeries responses containing source JSON, theme metadata, sampling coordinates and requested date ranges. Stores the latest
+          response for each request key rather than a complete revision history.

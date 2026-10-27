@@ -1,0 +1,24 @@
+version: 2
+
+sources:
+  - name: met_norway
+    description: Weather observations and forecasts from MET Norway.
+    database: dbw_dariusz
+    schema: bronze
+    tables:
+      - name: met_norway_frost_observations
+        description: >
+          Historical weather observations retrieved from MET Norway Frost.
+          Interpret measurements using their source units and time resolutions.
+
+      - name: met_norway_weather_forecasts
+        description: >
+          Locationforecast weather forecasts retaining archived forecast versions.
+          Includes location, forecast issue time, forecast valid time, measurement
+          maps and units. Forecasts are not historical observations.
+
+      - name: met_norway_weather_raw
+        description: >
+          Archived Locationforecast JSON responses with request details,
+          location coordinates, source update time, ingestion timestamps
+          and HTTP cache metadata.
