@@ -1,0 +1,32 @@
+
+# Python virtual environments
+.venv/
+.venv-*/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# dbt generated artifacts
+target/
+logs/
+dbt_packages/
+dbt_modules/
+
+# dbt Fusion
+*.macro_spans.json
+
+# Local credentials and environment variables
+.env
+.env.*
+!.env.example
+profiles.yml
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
