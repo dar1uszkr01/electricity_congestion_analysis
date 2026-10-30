@@ -1,0 +1,51 @@
+version: 2
+
+sources:
+  - name: nve
+    description: This source holds NVE data.
+    database: dbw_dariusz
+    schema: bronze
+    tables:
+      - name: nve_reservoir_areas
+        description:
+          Reference metadata for the geographical reporting areas used in NVE reservoir statistics, including countries, electricity bidding
+          zones, and watercourse regions. Contains area names, descriptions, categories, and identifiers. Join to reservoir statistics using
+          both omrType and omrnr.
+
+      - name: nve_reservoir_statistics
+        description: 
+          Historical weekly reservoir storage statistics by NVE reporting area. Contains the reporting date, ISO year and week, reservoir
+          filling level, storage capacity and stored energy in TWh, and previous-week filling level and change. Describes aggregated
+          storage conditions rather than individual reservoirs or electricity production.
+
+      - name: nve_hydapi_series
+        description: 
+          Metadata describing the hydrological time series available through NVE HydAPI. Connects stations to observed parameters and series
+          versions, with information about available time resolutions and observation coverage. Used to identify suitable series and
+          interpret their observations.
+
+      - name: nve_hydapi_stations
+        description: 
+          Metadata describing hydrological monitoring stations exposed through NVE HydAPI, including station identifiers, names, locations, and
+          available geographical and catchment attributes. Provides spatial context for series selection and station-level analysis.
+
+      - name: nve_hydapi_observations
+        description: 
+          Hydrological time-series values retrieved from NVE HydAPI. Observation context includes the station, parameter, series
+          version, time resolution, timestamp, unit, and available quality and correction indicators. Interpret values together with series
+          and parameter metadata; different parameters and resolutions require different aggregation methods.
+
+      - name: nve_hydapi_parameters
+        description: 
+          Reference definitions for the hydrological parameters exposed through NVE HydAPI, including parameter identifiers, names, and
+          measurement units. Used to distinguish physical quantities and interpret observation values consistently.
+
+      - name: nve_snow_hydrology
+        description:
+          Daily modelled grid-cell snow and hydrology values from NVE GridTimeSeries. Includes sampling coordinates, theme, observation
+          date, source time, resolution, value, unit and missing-value indicators. These are point samples rather than bidding-zone averages.
+
+      - name: nve_snow_hydrology_raw
+        description:
+          NVE GridTimeSeries responses containing source JSON, theme metadata, sampling coordinates and requested date ranges. Stores the latest
+          response for each request key rather than a complete revision history.
